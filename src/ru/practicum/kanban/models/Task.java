@@ -1,6 +1,6 @@
 package ru.practicum.kanban.models;
 
-import ru.practicum.kanban.enums.TaskStatus;
+import ru.practicum.kanban.models.enums.TaskStatus;
 
 import java.util.Objects;
 

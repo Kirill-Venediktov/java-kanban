@@ -1,6 +1,6 @@
 package ru.practicum.kanban;
 
-import ru.practicum.kanban.enums.TaskStatus;
+import ru.practicum.kanban.models.enums.TaskStatus;
 import ru.practicum.kanban.models.Epic;
 import ru.practicum.kanban.models.Subtask;
 import ru.practicum.kanban.models.Task;

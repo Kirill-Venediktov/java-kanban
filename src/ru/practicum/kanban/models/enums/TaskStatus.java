@@ -1,4 +1,4 @@
-package ru.practicum.kanban.enums;
+package ru.practicum.kanban.models.enums;
 
 public enum TaskStatus {
     NEW, IN_PROGRESS, DONE
