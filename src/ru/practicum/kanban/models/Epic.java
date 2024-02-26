@@ -1,17 +1,17 @@
 package ru.practicum.kanban.models;
 
-import java.util.Set;
+import java.util.List;
 
 public class Epic extends Task {
 
-    private final Set<Subtask> subtasks;
+    private final List<Subtask> subtasks;
 
-    public Epic(String name, String description, Set<Subtask> subtasks) {
+    public Epic(String name, String description, List<Subtask> subtasks) {
         super(name, description);
         this.subtasks = subtasks;
     }
 
-    public Set<Subtask> getSubtasks() {
+    public List<Subtask> getSubtasks() {
         return subtasks;
     }
 

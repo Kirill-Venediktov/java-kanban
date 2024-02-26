@@ -4,9 +4,10 @@ import ru.practicum.kanban.models.enums.TaskStatus;
 import ru.practicum.kanban.models.Epic;
 import ru.practicum.kanban.models.Subtask;
 import ru.practicum.kanban.models.Task;
+import ru.practicum.kanban.service.Managers;
 import ru.practicum.kanban.service.TaskManager;
 
-import java.util.HashSet;
+import java.util.ArrayList;
 
 public class Main {
 
@@ -16,8 +17,8 @@ public class Main {
         Task task1 = new Task("task1", "task one");
         Task task2 = new Task("task2", "task two");
 
-        Epic epic1 = new Epic("epic1", "epic one", new HashSet<>());
-        Epic epic2 = new Epic("epic2", "epic two", new HashSet<>());
+        Epic epic1 = new Epic("epic1", "epic one", new ArrayList<>());
+        Epic epic2 = new Epic("epic2", "epic two", new ArrayList<>());
 
         Subtask sub1 = new Subtask("sub1", "sub one", epic1);
         Subtask sub2 = new Subtask("sub2", "sub two", epic1);
@@ -27,27 +28,38 @@ public class Main {
         epic1.getSubtasks().add(sub2);
         epic2.getSubtasks().add(sub3);
 
-        TaskManager taskManager = new TaskManager();
+        TaskManager inMemoryTaskManager = Managers.getDefault();
 
-        taskManager.createTask(task1, TaskStatus.NEW);
-        taskManager.createTask(task2, TaskStatus.IN_PROGRESS);
-        taskManager.createEpic(epic1);
-        taskManager.createEpic(epic2);
+        inMemoryTaskManager.createTask(task1, TaskStatus.NEW);
+        inMemoryTaskManager.createTask(task2, TaskStatus.IN_PROGRESS);
+        inMemoryTaskManager.createEpic(epic1);
+        inMemoryTaskManager.createEpic(epic2);
 
-        System.out.println(taskManager.getAllTasks());
-        System.out.println(taskManager.getAllEpics());
-        System.out.println(taskManager.getAllSubtasks());
+        System.out.println(inMemoryTaskManager.getAllTasks());
+        System.out.println(inMemoryTaskManager.getAllEpics());
+        System.out.println(inMemoryTaskManager.getAllSubtasks());
         System.out.println("!");
+        System.out.println("history:" + inMemoryTaskManager.getHistory());
+        inMemoryTaskManager.getTask(1);
+        inMemoryTaskManager.getEpic(3);
+        inMemoryTaskManager.getSubtask(5);
+        System.out.println("history:" + inMemoryTaskManager.getHistory());
+        System.out.println("!");
+
         sub2.setTaskStatus(TaskStatus.DONE);
         sub1.setTaskStatus(TaskStatus.IN_PROGRESS);
-        taskManager.updateSubtask(sub2);
-        taskManager.updateSubtask(sub1);
+        inMemoryTaskManager.updateSubtask(sub2);
+        inMemoryTaskManager.updateSubtask(sub1);
         task1.setTaskStatus(TaskStatus.DONE);
-        taskManager.updateTask(task1);
-        System.out.println(taskManager.getEpicsSubtasks(epic1.getId()));
+        inMemoryTaskManager.updateTask(task1);
+        System.out.println(inMemoryTaskManager.getEpicsSubtasks(epic1.getId()));
+        System.out.println(inMemoryTaskManager.getAllTasks());
+        System.out.println(inMemoryTaskManager.getAllEpics());
+        System.out.println(inMemoryTaskManager.getAllSubtasks());
         System.out.println("!");
-        taskManager.removeAllEpics();
+        inMemoryTaskManager.removeAllEpics();
         System.out.println("!");
+
 
 
 
