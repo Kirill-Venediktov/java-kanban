@@ -12,8 +12,7 @@ class SubtaskTest {
     private static final String DESCRIPTION = "description";
 
     @Test
-    void subtasksShouldEquals_whenIdsIsEquals() {
-
+    void subtasksShouldEqualsWhenIdsIsEquals() {
         Epic epic = new Epic(NAME, DESCRIPTION, new ArrayList<>());
         Subtask subtask1 = new Subtask(NAME, DESCRIPTION, epic);
         Subtask subtask2 = new Subtask(NAME, DESCRIPTION, epic);

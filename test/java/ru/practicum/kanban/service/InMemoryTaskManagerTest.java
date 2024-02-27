@@ -31,7 +31,7 @@ class InMemoryTaskManagerTest {
     }
 
     @Test
-    void createTask_shouldAddTaskToMap_whenInputIsTaskAndTaskStatus() throws NoSuchFieldException, IllegalAccessException {
+    void createTaskShouldAddTaskToMapWhenInputIsTaskAndTaskStatus() throws NoSuchFieldException, IllegalAccessException {
         Task task = new Task(TASK_NAME, TASK_DESCRIPTION);
         TaskStatus status = TaskStatus.IN_PROGRESS;
         manager.createTask(task, status);
@@ -45,7 +45,7 @@ class InMemoryTaskManagerTest {
     }
 
     @Test
-    void createSubtask_shouldAddSubtaskTaskToMap_whenInputIsSubtaskAndTaskStatus() throws NoSuchFieldException, IllegalAccessException {
+    void createSubtaskShouldAddSubtaskTaskToMapWhenInputIsSubtaskAndTaskStatus() throws NoSuchFieldException, IllegalAccessException {
         Epic epic = new Epic(TASK_NAME, TASK_DESCRIPTION, new ArrayList<>());
         Subtask subtask = new Subtask(TASK_NAME, TASK_DESCRIPTION, epic);
         TaskStatus status = TaskStatus.IN_PROGRESS;
@@ -60,7 +60,7 @@ class InMemoryTaskManagerTest {
     }
 
     @Test
-    void createEpic_shouldAddEpicToMap_whenInputIsEpic() throws NoSuchFieldException, IllegalAccessException {
+    void createEpicShouldAddEpicToMapWhenInputIsEpic() throws NoSuchFieldException, IllegalAccessException {
         Epic epic = new Epic(TASK_NAME, TASK_DESCRIPTION, new ArrayList<>());
         manager.createEpic(epic);
         Map<Integer, Epic> epicMap = new HashMap<>();
@@ -72,7 +72,7 @@ class InMemoryTaskManagerTest {
     }
 
     @Test
-    void getTask_shouldGetTask_whenInputIsTaskId() {
+    void getTaskShouldGetTaskWhenInputIsTaskId() {
         Task task = new Task(TASK_NAME, TASK_DESCRIPTION);
         TaskStatus status = TaskStatus.IN_PROGRESS;
         manager.createTask(task, status);
@@ -80,7 +80,7 @@ class InMemoryTaskManagerTest {
     }
 
     @Test
-    void getTask_shouldGetNull_whenInputIsNotCorrectId() {
+    void getTaskShouldGetNullWhenInputIsNotCorrectId() {
         Task task = new Task(TASK_NAME, TASK_DESCRIPTION);
         TaskStatus status = TaskStatus.IN_PROGRESS;
         manager.createTask(task, status);
@@ -88,21 +88,21 @@ class InMemoryTaskManagerTest {
     }
 
     @Test
-    void getEpic_shouldGetEpic_whenInputIsEpicId() {
+    void getEpicShouldGetEpicWhenInputIsEpicId() {
         Epic epic = new Epic(TASK_NAME, TASK_DESCRIPTION, new ArrayList<>());
         manager.createEpic(epic);
         assertEquals(epic, manager.getEpic(epic.getId()));
     }
 
     @Test
-    void getEpic_shouldGetNull_whenInputIsNotCorrectId() {
+    void getEpicShouldGetNullWhenInputIsNotCorrectId() {
         Epic epic = new Epic(TASK_NAME, TASK_DESCRIPTION, new ArrayList<>());
         manager.createEpic(epic);
         assertNull(manager.getEpic(NOT_CORRECT_ID));
     }
 
     @Test
-    void getSubtask_shouldGetSubtask_whenInputIsSubtaskId() {
+    void getSubtaskShouldGetSubtaskWhenInputIsSubtaskId() {
         Epic epic = new Epic(TASK_NAME, TASK_DESCRIPTION, new ArrayList<>());
         Subtask subtask = new Subtask(TASK_NAME, TASK_DESCRIPTION, epic);
         manager.createSubtask(subtask, TaskStatus.IN_PROGRESS);
@@ -110,7 +110,7 @@ class InMemoryTaskManagerTest {
     }
 
     @Test
-    void getSubtask_shouldGetNull_whenInputIsNotCorrectId() {
+    void getSubtaskShouldGetNullWhenInputIsNotCorrectId() {
         Epic epic = new Epic(TASK_NAME, TASK_DESCRIPTION, new ArrayList<>());
         Subtask subtask = new Subtask(TASK_NAME, TASK_DESCRIPTION, epic);
         manager.createSubtask(subtask, TaskStatus.IN_PROGRESS);
@@ -118,7 +118,7 @@ class InMemoryTaskManagerTest {
     }
 
     @Test
-    void getAllTasks_shouldGetListOfTasks() {
+    void getAllTasksShouldGetListOfTasks() {
         Task task = new Task(TASK_NAME, TASK_DESCRIPTION);
         TaskStatus status = TaskStatus.IN_PROGRESS;
         manager.createTask(task, status);
@@ -127,7 +127,7 @@ class InMemoryTaskManagerTest {
     }
 
     @Test
-    void getAllSubtasks_shouldGetListOfSubtasks() {
+    void getAllSubtasksShouldGetListOfSubtasks() {
         Epic epic = new Epic(TASK_NAME, TASK_DESCRIPTION, new ArrayList<>());
         Subtask subtask = new Subtask(TASK_NAME, TASK_DESCRIPTION, epic);
         TaskStatus status = TaskStatus.IN_PROGRESS;
@@ -137,7 +137,7 @@ class InMemoryTaskManagerTest {
     }
 
     @Test
-    void getAllEpics_shouldGetListOfEpics() {
+    void getAllEpicsShouldGetListOfEpics() {
         Epic epic = new Epic(TASK_NAME, TASK_DESCRIPTION, new ArrayList<>());
         manager.createEpic(epic);
         List<Epic> epicList = new ArrayList<>(Collections.singletonList(epic));
@@ -145,7 +145,7 @@ class InMemoryTaskManagerTest {
     }
 
     @Test
-    void removeAllTasks_shouldGetEmptyList() {
+    void removeAllTasksShouldGetEmptyList() {
         Task task = new Task(TASK_NAME, TASK_DESCRIPTION);
         TaskStatus status = TaskStatus.IN_PROGRESS;
         manager.createTask(task, status);
@@ -154,7 +154,7 @@ class InMemoryTaskManagerTest {
     }
 
     @Test
-    void removeAllSubtasks_shouldGetEmptyList() {
+    void removeAllSubtasksShouldGetEmptyList() {
         Epic epic = new Epic(TASK_NAME, TASK_DESCRIPTION, new ArrayList<>());
         Subtask subtask = new Subtask(TASK_NAME, TASK_DESCRIPTION, epic);
         TaskStatus status = TaskStatus.IN_PROGRESS;
@@ -165,7 +165,7 @@ class InMemoryTaskManagerTest {
     }
 
     @Test
-    void removeAllEpics_shouldGetEmptyList() {
+    void removeAllEpicsShouldGetEmptyList() {
         Epic epic = new Epic(TASK_NAME, TASK_DESCRIPTION, new ArrayList<>());
         manager.createEpic(epic);
         manager.removeAllEpics();
@@ -173,7 +173,7 @@ class InMemoryTaskManagerTest {
     }
 
     @Test
-    void updateTask_shouldUpdateTaskInMap_whenInputIsTask() {
+    void updateTaskShouldUpdateTaskInMapWhenInputIsTask() {
         Task task = new Task(TASK_NAME, TASK_DESCRIPTION);
         TaskStatus status = TaskStatus.IN_PROGRESS;
         manager.createTask(task, status);
@@ -183,7 +183,7 @@ class InMemoryTaskManagerTest {
     }
 
     @Test
-    void updateSubtask_shouldUpdateSubtask_whenInputIsSubtask() {
+    void updateSubtaskShouldUpdateSubtaskWhenInputIsSubtask() {
         Epic epic = new Epic(TASK_NAME, TASK_DESCRIPTION, new ArrayList<>());
         Subtask subtask = new Subtask(TASK_NAME, TASK_DESCRIPTION, epic);
         manager.createSubtask(subtask, TaskStatus.IN_PROGRESS);
@@ -193,7 +193,7 @@ class InMemoryTaskManagerTest {
     }
 
     @Test
-    void updateEpic_shouldUpdateEpic_whenInputIsEpic() {
+    void updateEpicShouldUpdateEpicWhenInputIsEpic() {
         Epic epic = new Epic(TASK_NAME, TASK_DESCRIPTION, new ArrayList<>());
         manager.createEpic(epic);
         epic.setDescription("CHANGED");
@@ -202,7 +202,7 @@ class InMemoryTaskManagerTest {
     }
 
     @Test
-    void removeTask_shouldReturnNull_whenInputIsTaskId() {
+    void removeTaskShouldReturnNullWhenInputIsTaskId() {
         Task task = new Task(TASK_NAME, TASK_DESCRIPTION);
         TaskStatus status = TaskStatus.IN_PROGRESS;
         manager.createTask(task, status);
@@ -211,7 +211,7 @@ class InMemoryTaskManagerTest {
     }
 
     @Test
-    void removeEpic_shouldReturnNull_whenInputIsEpicId() {
+    void removeEpicShouldReturnNullWhenInputIsEpicId() {
         Epic epic = new Epic(TASK_NAME, TASK_DESCRIPTION, new ArrayList<>());
         manager.createEpic(epic);
         manager.removeEpic(epic.getId());
@@ -219,7 +219,7 @@ class InMemoryTaskManagerTest {
     }
 
     @Test
-    void removeSubtask_shouldReturnNull_whenInputIsNotCorrectId() {
+    void removeSubtaskShouldReturnNullWhenInputIsNotCorrectId() {
         Epic epic = new Epic(TASK_NAME, TASK_DESCRIPTION, new ArrayList<>());
         Subtask subtask = new Subtask(TASK_NAME, TASK_DESCRIPTION, epic);
         manager.createSubtask(subtask, TaskStatus.IN_PROGRESS);
@@ -229,7 +229,7 @@ class InMemoryTaskManagerTest {
     }
 
     @Test
-    void getEpicsSubtasks_shouldGetListOfSubtasks_whenInputIsEpicId() {
+    void getEpicsSubtasksShouldGetListOfSubtasksWhenInputIsEpicId() {
         Epic epic = new Epic(TASK_NAME, TASK_DESCRIPTION, new ArrayList<>());
         Subtask subtask1 = new Subtask(TASK_NAME, TASK_DESCRIPTION, epic);
         Subtask subtask2 = new Subtask(TASK_NAME, TASK_DESCRIPTION, epic);
@@ -241,7 +241,7 @@ class InMemoryTaskManagerTest {
     }
 
     @Test
-    void getHistory_shouldGetHistoryList() {
+    void getHistoryShouldGetHistoryList() {
         Task task1 = new Task(TASK_NAME, TASK_DESCRIPTION);
         Task task2 = new Task(TASK_NAME, TASK_DESCRIPTION);
         TaskStatus status = TaskStatus.IN_PROGRESS;

@@ -10,7 +10,7 @@ class TaskTest {
     private static final String TASK_DESCRIPTION = "description";
 
     @Test
-    void tasksShouldEquals_whenIdsIsEquals() {
+    void tasksShouldEqualsWhenIdsIsEquals() {
 
         Task task1 = new Task(TASK_NAME, TASK_DESCRIPTION);
         Task task2 = new Task(TASK_NAME, TASK_DESCRIPTION);

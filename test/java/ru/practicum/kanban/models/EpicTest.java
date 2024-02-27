@@ -12,7 +12,7 @@ class EpicTest {
     private static final String EPIC_DESCRIPTION = "description";
 
     @Test
-    void epicsShouldEquals_whenIdsIsEquals() {
+    void epicsShouldEqualsWhenIdsIsEquals() {
         Epic epic1 = new Epic(EPIC_NAME, EPIC_DESCRIPTION, new ArrayList<>());
         Epic epic2 = new Epic(EPIC_NAME, EPIC_DESCRIPTION, new ArrayList<>());
         epic1.setId(1);

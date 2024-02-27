@@ -17,7 +17,7 @@ class InMemoryHistoryManagerTest {
     }
 
     @Test
-    void getHistory_shouldGetEmptyList() {
+    void getHistoryShouldGetEmptyList() {
         assertEquals(new LinkedList<>(), manager.getHistory());
     }
 

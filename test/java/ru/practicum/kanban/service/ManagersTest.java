@@ -7,13 +7,13 @@ import static org.junit.jupiter.api.Assertions.*;
 class ManagersTest {
 
     @Test
-    void getDefault_shouldReturnInMemoryTaskManager() {
+    void getDefaultShouldReturnInMemoryTaskManager() {
         InMemoryTaskManager taskManager = new InMemoryTaskManager();
         assertEquals(taskManager, Managers.getDefault());
     }
 
     @Test
-    void getDefaultHistory_shouldReturnInMemoryHistoryManager() {
+    void getDefaultHistoryShouldReturnInMemoryHistoryManager() {
         InMemoryHistoryManager historyManager = new InMemoryHistoryManager();
         assertEquals(historyManager, Managers.getDefaultHistory());
     }
