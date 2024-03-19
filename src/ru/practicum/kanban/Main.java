@@ -11,7 +11,8 @@ import java.util.ArrayList;
 
 public class Main {
 
-    private static final String HISTORY_STRING = "history:";
+    private static final String HISTORY_STRING = "history: %s %n";
+    private static final String HISTORY_AFTER_REMOVING_STRING = "history after removing: %s %n";
 
     public static void main(String[] args) {
         Task task1 = new Task("task1", "task one");
@@ -35,25 +36,25 @@ public class Main {
         inMemoryTaskManager.createEpic(epic1);
         inMemoryTaskManager.createEpic(epic2);
 
-        System.out.println(HISTORY_STRING + inMemoryTaskManager.getHistory());
+        System.out.printf(HISTORY_STRING, inMemoryTaskManager.getHistory());
         inMemoryTaskManager.getTask(1);
-        System.out.println(HISTORY_STRING + inMemoryTaskManager.getHistory());
+        System.out.printf(HISTORY_STRING, inMemoryTaskManager.getHistory());
         inMemoryTaskManager.getEpic(3);
-        System.out.println(HISTORY_STRING + inMemoryTaskManager.getHistory());
+        System.out.printf(HISTORY_STRING, inMemoryTaskManager.getHistory());
         inMemoryTaskManager.getSubtask(5);
-        System.out.println(HISTORY_STRING + inMemoryTaskManager.getHistory());
+        System.out.printf(HISTORY_STRING, inMemoryTaskManager.getHistory());
         inMemoryTaskManager.getEpic(7);
-        System.out.println(HISTORY_STRING + inMemoryTaskManager.getHistory());
+        System.out.printf(HISTORY_STRING, inMemoryTaskManager.getHistory());
         inMemoryTaskManager.getSubtask(5);
-        System.out.println(HISTORY_STRING + inMemoryTaskManager.getHistory());
+        System.out.printf(HISTORY_STRING, inMemoryTaskManager.getHistory());
         inMemoryTaskManager.getTask(1);
-        System.out.println(HISTORY_STRING + inMemoryTaskManager.getHistory());
+        System.out.printf(HISTORY_STRING, inMemoryTaskManager.getHistory());
 
         inMemoryTaskManager.removeTask(1);
-        System.out.println("history after removing:" + inMemoryTaskManager.getHistory());
+        System.out.printf(HISTORY_AFTER_REMOVING_STRING, inMemoryTaskManager.getHistory());
 
         inMemoryTaskManager.removeEpic(3);
-        System.out.println("history after removing:" + inMemoryTaskManager.getHistory());
+        System.out.printf(HISTORY_AFTER_REMOVING_STRING, inMemoryTaskManager.getHistory());
 
         System.out.println(inMemoryTaskManager.getAllTasks());
         System.out.println(inMemoryTaskManager.getAllEpics());
