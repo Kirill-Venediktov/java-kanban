@@ -11,9 +11,9 @@ import java.util.ArrayList;
 
 public class Main {
 
-    public static void main(String[] args) {
-        System.out.println("Поехали!");
+    private static final String HISTORY_STRING = "history:";
 
+    public static void main(String[] args) {
         Task task1 = new Task("task1", "task one");
         Task task2 = new Task("task2", "task two");
 
@@ -26,7 +26,7 @@ public class Main {
 
         epic1.getSubtasks().add(sub1);
         epic1.getSubtasks().add(sub2);
-        epic2.getSubtasks().add(sub3);
+        epic1.getSubtasks().add(sub3);
 
         TaskManager inMemoryTaskManager = Managers.getDefault();
 
@@ -35,34 +35,29 @@ public class Main {
         inMemoryTaskManager.createEpic(epic1);
         inMemoryTaskManager.createEpic(epic2);
 
-        System.out.println(inMemoryTaskManager.getAllTasks());
-        System.out.println(inMemoryTaskManager.getAllEpics());
-        System.out.println(inMemoryTaskManager.getAllSubtasks());
-        System.out.println("!");
-        System.out.println("history:" + inMemoryTaskManager.getHistory());
+        System.out.println(HISTORY_STRING + inMemoryTaskManager.getHistory());
         inMemoryTaskManager.getTask(1);
+        System.out.println(HISTORY_STRING + inMemoryTaskManager.getHistory());
         inMemoryTaskManager.getEpic(3);
+        System.out.println(HISTORY_STRING + inMemoryTaskManager.getHistory());
         inMemoryTaskManager.getSubtask(5);
-        System.out.println("history:" + inMemoryTaskManager.getHistory());
-        System.out.println("!");
+        System.out.println(HISTORY_STRING + inMemoryTaskManager.getHistory());
+        inMemoryTaskManager.getEpic(7);
+        System.out.println(HISTORY_STRING + inMemoryTaskManager.getHistory());
+        inMemoryTaskManager.getSubtask(5);
+        System.out.println(HISTORY_STRING + inMemoryTaskManager.getHistory());
+        inMemoryTaskManager.getTask(1);
+        System.out.println(HISTORY_STRING + inMemoryTaskManager.getHistory());
 
-        sub2.setTaskStatus(TaskStatus.DONE);
-        sub1.setTaskStatus(TaskStatus.IN_PROGRESS);
-        inMemoryTaskManager.updateSubtask(sub2);
-        inMemoryTaskManager.updateSubtask(sub1);
-        task1.setTaskStatus(TaskStatus.DONE);
-        inMemoryTaskManager.updateTask(task1);
-        System.out.println(inMemoryTaskManager.getEpicsSubtasks(epic1.getId()));
+        inMemoryTaskManager.removeTask(1);
+        System.out.println("history after removing:" + inMemoryTaskManager.getHistory());
+
+        inMemoryTaskManager.removeEpic(3);
+        System.out.println("history after removing:" + inMemoryTaskManager.getHistory());
+
         System.out.println(inMemoryTaskManager.getAllTasks());
         System.out.println(inMemoryTaskManager.getAllEpics());
         System.out.println(inMemoryTaskManager.getAllSubtasks());
-        System.out.println("!");
-        inMemoryTaskManager.removeAllEpics();
-        System.out.println("!");
-
-
-
-
-
     }
+
 }
